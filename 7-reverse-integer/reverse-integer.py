@@ -1,18 +1,20 @@
 class Solution:
     def reverse(self, x: int) -> int:
         reversed_x = 0
-        number = x
         absolute_x = abs(x)
-       
+        INT_MIN, INT_MAX = -2**31, 2**31 - 1  # 32-bit integer range
+
         while absolute_x > 0:
-            num = absolute_x % 10
-            reversed_x = reversed_x * 10 + num
+            # Pop the last digit
+            digit = absolute_x % 10
             absolute_x //= 10
 
-        if number < 0:
-            reversed_x = -reversed_x
+            # Check for overflow before appending the digit
+            if (reversed_x > INT_MAX // 10) or (reversed_x == INT_MAX // 10 and digit > INT_MAX % 10):
+                return 0
 
-        if -2**31 <= reversed_x <= 2**31 - 1:
-            return reversed_x
-        
-        return 0
+            # Push the digit to the reversed number
+            reversed_x = reversed_x * 10 + digit
+
+        # Apply the original sign
+        return reversed_x if x > 0 else -reversed_x
