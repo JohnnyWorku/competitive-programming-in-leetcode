@@ -1,11 +1,5 @@
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        # It has two ways --- using list and hash map(dictionary)
-        #frequency_list = []
-
-        # for i in range(len(costs) + 1):
-        #     frquency_list.append(0)
-
         frequency_dict = {}
 
         for j in costs:
