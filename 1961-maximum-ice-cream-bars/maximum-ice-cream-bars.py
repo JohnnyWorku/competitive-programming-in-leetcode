@@ -1,19 +1,25 @@
 class Solution:
     def maxIceCream(self, costs: List[int], coins: int) -> int:
-        frequency_list = []
+        # It has two ways --- using list and hash map(dictionary)
+        #frequency_list = []
 
-        for i in range(max(costs) + 1):
-            frequency_list.append(0)
+        # for i in range(len(costs) + 1):
+        #     frquency_list.append(0)
+
+        frequency_dict = {}
 
         for j in costs:
-            frequency_list[j] += 1
+            if j in frequency_dict:
+                frequency_dict[j] += 1
+            else:
+                frequency_dict[j] = 1
 
         index = 0
         for k in range(max(costs) + 1):
-            while frequency_list[k] > 0:
+            while frequency_dict.get(k, 0) > 0:
                 costs[index] = k
                 index += 1
-                frequency_list[k] -= 1
+                frequency_dict[k] -= 1
 
         count = 0
         m = 0
