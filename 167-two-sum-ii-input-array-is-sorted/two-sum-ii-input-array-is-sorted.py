@@ -3,7 +3,7 @@ class Solution:
         i = 0
         j = len(numbers) - 1
 
-        while i < j < len(numbers):
+        while i < j:
             _sum = numbers[i] + numbers[j]
             if _sum == target:
                 return [i + 1, j + 1]
