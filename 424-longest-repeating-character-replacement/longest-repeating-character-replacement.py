@@ -24,7 +24,7 @@ class Solution:
             count[s[j]] = 1 + count.get(s[j], 0)
             max_frequency = max(max_frequency, count[s[j]])
 
-            if (j - i + 1) - max_frequency > k:
+            while (j - i + 1) - max_frequency > k:
                 count[s[i]] -= 1
                 i += 1
 
