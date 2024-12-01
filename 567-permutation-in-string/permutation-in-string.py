@@ -1,15 +1,17 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        s1_count = Counter(s1)
         i = 0
-        j = len(s1) - 1
+        j = i + len(s1) - 1
+        s1_counter = Counter(s1)
 
         while j < len(s2):
-            s2_count = Counter(s2[i: j + 1])
-            if s1_count == s2_count:
+            s2_counter = Counter(s2[i: j + 1])
+
+            if s1_counter == s2_counter:
                 return True
 
-            i += 1
-            j += 1
+            else:
+                i += 1
+                j += 1
 
         return False
