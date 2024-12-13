@@ -17,12 +17,18 @@ class Solution:
         min_cards = float('inf')
 
         for index, card in enumerate(cards):
-            if card not in nums_dict:
-                nums_dict[card] = index
-
-            else:
+            if card in nums_dict:
                 difference = index - nums_dict[card]
                 min_cards = min(min_cards, difference)
-                nums_dict[card] = index
+
+            nums_dict[card] = index
+
+            # if card not in nums_dict:
+            #     nums_dict[card] = index
+
+            # else:
+            #     difference = index - nums_dict[card]
+            #     min_cards = min(min_cards, difference)
+            #     nums_dict[card] = index
 
         return (min_cards + 1) if min_cards != float('inf') else -1
