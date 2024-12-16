@@ -7,6 +7,7 @@ class Solution:
                 stack.append(char)
 
             else:
-                stack.pop()
+                if stack:
+                    stack.pop()
 
         return "".join(stack)
