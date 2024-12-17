@@ -3,11 +3,10 @@ class Solution:
         stack = []
 
         for char in s:
-            if stack and stack[-1] == char:
+            if stack and char == stack[-1]:
                 stack.pop()
 
             else:
                 stack.append(char)
 
         return "".join(stack)
-        
