@@ -4,15 +4,11 @@ class Solution:
         result = nums[0]
 
         for num in nums:
-            if total >= 0:
-                total += num
-
-            else:
+            if total < 0:
                 total = 0
-                total += num
 
-            if total > result:
-                result = total
+            total += num
+            result = max(result, total)
 
         return result
         
