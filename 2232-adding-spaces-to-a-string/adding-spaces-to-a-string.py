@@ -14,8 +14,7 @@ class Solution:
                 res.append(" ")
                 j += 1
 
-        while i < len(s):
-            res.append(s[i])
-            i += 1
+        if i < len(s):
+            res.append(s[i:])
 
         return "".join(res)
