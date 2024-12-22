@@ -5,6 +5,6 @@ class Solution:
         total = 0
 
         for i in range(0, len(nums), 2):
-            total += min(nums[i], nums[i + 1])
+            total += nums[i]
 
         return total
