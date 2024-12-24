@@ -1,22 +1,23 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        brackets_to_be_removed = []
-        new_s = ""
+        res = []
+        count = 0
 
         for i in range(len(s)):
-            if not brackets_to_be_removed and s[i] == ")":
-                brackets_to_be_removed.append(i)
-            elif brackets_to_be_removed and (s[brackets_to_be_removed[-1]] == ")" and s[i] == ")"):
-                brackets_to_be_removed.append(i)
-            elif s[i] == "(":
-                brackets_to_be_removed.append(i)
-            elif brackets_to_be_removed and (s[brackets_to_be_removed[-1]] == "(" and s[i] == ")"):
-                brackets_to_be_removed.pop()
+            if s[i] == "(":
+                res.append(s[i])
+                count += 1
+            elif s[i] == ")" and count > 0:
+                res.append(s[i])
+                count -= 1
+            elif s[i].isalpha():
+                res.append(s[i])
 
-        for j in range(len(s)):
-            if j not in brackets_to_be_removed:
-                new_s += s[j]
+        filtered = []  # This is created because there can be unclosed brackets in the array ...
+        for c in res[::-1]:  # We reversed res because most of the time unclosed brackets at the last positions makes the string invalid
+            if c == "(" and count > 0:
+                count -= 1
             else:
-                continue
+                filtered.append(c)
 
-        return new_s
+        return "".join(filtered[::-1])
