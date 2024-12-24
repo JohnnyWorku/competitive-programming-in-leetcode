@@ -1,20 +1,14 @@
 class Solution:
     def addSpaces(self, s: str, spaces: List[int]) -> str:
-        i = 0
-        j = 0
-        
-        res = []
+        new_s = ""
+        l, r = 0, 0
 
-        while i < len(s) and j < len(spaces):
-            if i < spaces[j]:
-                res.append(s[i])
-                i += 1
+        while l < len(s) and r < len(spaces):
+            new_s += s[l: spaces[r]] + " " 
+            l = spaces[r]
+            r += 1
 
-            else:
-                res.append(" ")
-                j += 1
+        if l < len(s):
+            new_s += s[l:]
 
-        if i < len(s):
-            res.append(s[i:])
-
-        return "".join(res)
+        return new_s
