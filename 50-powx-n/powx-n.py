@@ -4,5 +4,5 @@ class Solution:
         # return power
 
         # power = x ** n
-        return x ** n
+        return pow(x, n)
     
