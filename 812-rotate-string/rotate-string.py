@@ -1,8 +1,11 @@
 class Solution:
     def rotateString(self, s: str, goal: str) -> bool:
-        s_updated = s + s
+        # The efficient one
+        return len(s) == len(goal) and goal in (s + s)
 
-        if len(goal) == len(s) and goal in s_updated:
-            return True
+        # s_updated = s + s
 
-        return False
+        # if len(goal) == len(s) and goal in s_updated:
+        #     return True
+
+        # return False
