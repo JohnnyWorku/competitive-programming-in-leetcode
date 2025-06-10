@@ -6,18 +6,36 @@ class Solution:
             graph[node1].append(node2)
             graph[node2].append(node1)
 
-        visited = set()
-        def dfs(node, visited):
+        ## Recursive way
+
+        # visited = set()
+        # def dfs(node, visited):
+        #     if node == destination:
+        #         return True
+
+        #     visited.add(node)
+        #     for neighbour in graph[node]:
+        #         if neighbour not in visited:
+        #             if dfs(neighbour, visited):
+        #                 return True
+            
+        #     return False
+
+        # return dfs(source, visited)
+
+        ## Iterative way
+        visited = set([source])
+        stack = [source]
+
+        while stack:
+            node = stack.pop()
             if node == destination:
                 return True
 
-            visited.add(node)
             for neighbour in graph[node]:
                 if neighbour not in visited:
-                    if dfs(neighbour, visited):
-                        return True
-            
-            return False
+                    visited.add(neighbour)
+                    stack.append(neighbour)
 
-        return dfs(source, visited)
+        return False
         
