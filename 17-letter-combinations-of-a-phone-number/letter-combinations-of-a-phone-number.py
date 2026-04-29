@@ -13,27 +13,15 @@ class Solution:
 
         res = []
 
-        if len(digits) == 1:
-            res = digit_letter[digits[0]]
+        def backtrack(i, curr_str):
+            if len(curr_str) == len(digits):
+                res.append(curr_str)
+                return
 
-        elif len(digits) == 2:
-            for letter_1 in digit_letter[digits[0]]:
-                for letter_2 in digit_letter[digits[1]]:
-                    res.append(letter_1 + letter_2)
+            for char in digit_letter[digits[i]]:
+                backtrack(i + 1, curr_str + char)
 
-        elif len(digits) == 3:
-            for letter_1 in digit_letter[digits[0]]:
-                for letter_2 in digit_letter[digits[1]]:
-                    for letter_3 in digit_letter[digits[2]]:
-                        res.append(letter_1 + letter_2 + letter_3)
-
-        elif len(digits) == 4:
-            for letter_1 in digit_letter[digits[0]]:
-                for letter_2 in digit_letter[digits[1]]:
-                    for letter_3 in digit_letter[digits[2]]:
-                        for letter_4 in digit_letter[digits[3]]:
-                            res.append(letter_1 + letter_2 + letter_3 + letter_4)
-
+        backtrack(0, "")
 
         return res
         
